@@ -145,3 +145,4 @@ const color_blindness_images = [
 addCaptcha("", "crosswalk", images); // Original captcha
 addCaptcha("blurry_", "crosswalk", vision_loss_images); // Blurry captcha
 addCaptcha("color_", "trafficlight_green", color_blindness_images); // Color blindness captcha
+addCaptcha("dyslexia_", "crosswalk", images); // Dyslexia captcha
