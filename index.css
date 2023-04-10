@@ -16,10 +16,9 @@
 
 body {
     font-family: nyt-cheltenham;
-    font-size: 22px;
+    font-size: 24px;
     color: #EEEEEE;
-    background-color: #333333;
-    transition: background-color 0.2s ease-in;
+    background: #1d1d1d;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -65,6 +64,15 @@ img {
     border: 5px solid transparent;
 }
 
+img.beatles {
+    width: 420px;
+    height: 600px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 img.selected {
     border-color: black;
 }
@@ -80,4 +88,19 @@ img.selected {
     justify-content: left;
     gap: 5px;
     margin: 20px auto;
+}
+
+.title {
+    margin-top: 400px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.byline {
+    margin-top: 50px;
+    margin-bottom: 550px;
+    font-size: 24px;
+    text-align: center;
 }

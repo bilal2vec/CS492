@@ -1,187 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>CAPTCHA Accessibility Demo</title>
-    <script src="./index.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <title>CAPTCHA Accessibility Demo</title>
+        <script src="./index.js"></script>
+    </head>
 
-<body>
-    <div id="container">
-        <section class="item">
-            <h1>Introduction</h1>
-            <p>
-                CAPTCHAs have become a common security measure to protect websites from automated bots. However, their
-                implementation often poses challenges for people with disabilities, leading to accessibility issues.
-                This
-                demo
-                will explore the difficulties of CAPTCHAs and suggest alternative solutions that prioritize both
-                security
-                and
-                accessibility.
-            </p>
-        </section>
+    <body>
+        <div id="container">
+            <div class="title">
+                Proof of Humanity: the CAPTCHA Accessibility Problem
+            </div>
+            <div class="byline">
+                By Bilal Khan, Elena Pan, & Kevin Tong
+            </div>
+            <section class="item">
+                <p>
+                    "I'm not a robot." The animated checkbox and tiles are instantly recognizable to any netizen worthy of the
+                    name. What do these fuzzy letters say? How many animals are there? Find all the bicycles. As resources and
+                    services have increasingly found their way onto the internet, the defenses guarding their access have grown in
+                    sophistication.
+                </p>
 
-        <section class="item">
-            <h1>What are Captchas</h1>
-            <p>
-                CAPTCHAs (Completely Automated Public Turing test to tell Computers and Humans Apart) are a type of
-                challenge-response test used to determine whether the user is human or an automated bot. They are
-                commonly
-                employed on websites to prevent spam, automated submissions, or abuse from bots.
+                <p>
+                    To protect against automated attacks, websites have an interest in determining if a user is indeed human, and
+                    the most common way of doing so is to ask the user to complete a series of tasks <i>presumably</i> any human
+                    could easily complete but would cost a bot significant effort. This is known as a reverse Turing test. It's
+                    most common reification is the CAPTCHA — Completely Automated Public Turing test to tell Computers and
+                    Humans Apart. Here's Google's reCAPTCHAv2 (image not theirs):
+                </p>
 
-                There are various types of CAPTCHAs, including:
-            <ul>
-                <li>
-                    Text-based CAPTCHAs: These require the user to identify and type a series of distorted letters
-                    and/or
-                    numbers displayed in an image. The distortions make it difficult for bots to recognize the
-                    characters.
-                </li>
-                <li>
-                    Image-based CAPTCHAs: Users are asked to identify specific objects within a set of images, such as
-                    selecting
-                    all images that contain a particular object (e.g., traffic lights, buses, or bicycles).
+                <div style="width:100%;">
+                    <img src="images/beatles.png" class="beatles"/>
+                </div>
 
-                </li>
-                <li>
-                    Audio CAPTCHAs: Users listen to an audio clip with distorted speech or background noise and type the
-                    words
-                    they hear. This type of CAPTCHA is primarily intended for visually impaired users.
-                </li>
-                <li>
-                    Mathematical CAPTCHAs: Users solve a simple math problem, like adding or subtracting two numbers,
+
+                <h1>Introduction</h1>
+                <p>
+                    CAPTCHAs have become a common security measure to protect websites from automated bots. However, their
+                    implementation often poses challenges for people with disabilities, leading to accessibility issues.
+                    This
+                    demo
+                    will explore the difficulties of CAPTCHAs and suggest alternative solutions that prioritize both
+                    security
                     and
-                    enter
-                    the answer to prove they are human.
-                </li>
-                <li>
-                    Google's reCAPTCHA: This system utilizes advanced risk analysis techniques to determine whether a
+                    accessibility.
+                </p>
+            </section>
+
+            <section class="item">
+                <h1>What are Captchas</h1>
+                <p>
+                    CAPTCHAs (Completely Automated Public Turing test to tell Computers and Humans Apart) are a type of
+                    challenge-response test used to determine whether the user is human or an automated bot. They are
+                    commonly
+                    employed on websites to prevent spam, automated submissions, or abuse from bots.
+
+                    There are various types of CAPTCHAs, including:
+                    <ul>
+                        <li>
+                            Text-based CAPTCHAs: These require the user to identify and type a series of distorted letters
+                            and/or
+                            numbers displayed in an image. The distortions make it difficult for bots to recognize the
+                            characters.
+                        </li>
+                        <li>
+                            Image-based CAPTCHAs: Users are asked to identify specific objects within a set of images, such as
+                            selecting
+                            all images that contain a particular object (e.g., traffic lights, buses, or bicycles).
+
+                        </li>
+                        <li>
+                            Audio CAPTCHAs: Users listen to an audio clip with distorted speech or background noise and type
+                            the
+                            words
+                            they hear. This type of CAPTCHA is primarily intended for visually impaired users.
+                        </li>
+                        <li>
+                            Mathematical CAPTCHAs: Users solve a simple math problem, like adding or subtracting two numbers,
+                            and
+                            enter
+                            the answer to prove they are human.
+                        </li>
+                        <li>
+                            Google's reCAPTCHA: This system utilizes advanced risk analysis techniques to determine whether a
+                            user
+                            is
+                            human or a bot. It often requires users to click a checkbox that says "I'm not a robot" and,
+                            depending
+                            on
+                            the user's behavior, may present additional challenges like image recognition tasks.
+                        </li>
+                    </ul>
+                    CAPTCHAs help protect websites from spam and malicious activities but can also create accessibility
+                    challenges for users with disabilities, such as those with visual impairments or cognitive difficulties.
+                </p>
+            </section>
+
+            <section>
+                <h1>
+                    CAPTCHA Game
+                </h1>
+                <h2>Select all crosswalk images</h2>
+                <div id="captcha"></div>
+                <button id="captcha-submit">Submit</button>
+                <p id="captcha-score"></p>
+                <br />
+                <button id="captcha-reset" hidden>Play Again</button>
+
+                <p>
+                    This is a demo of a CAPTCHA game. The goal is to select all images that contain a crosswalk. The
+                    images
+                    are
+                    displayed in a grid, and the user can select an image by clicking on it. The user can also deselect
+                    an
+                    image
+                    by clicking on it again. The user can submit their selection by clicking the "Submit" button. The
                     user
-                    is
-                    human or a bot. It often requires users to click a checkbox that says "I'm not a robot" and,
-                    depending
-                    on
-                    the user's behavior, may present additional challenges like image recognition tasks.
-                </li>
-            </ul>
-            CAPTCHAs help protect websites from spam and malicious activities but can also create accessibility
-            challenges for users with disabilities, such as those with visual impairments or cognitive difficulties.
-            </p>
-        </section>
+                    can
+                    play again by clicking the "Play Again" button.
+                </p>
+                <p>
+                    This game is intended to be a simplified version of a CAPTCHA. It is not intended to be a
+                    replacement for
+                    a
+                    CAPTCHA, but rather a demonstration of the accessibility challenges that CAPTCHAs can pose for
+                    users
+                    with
+                    disabilities.
+                </p>
+                <p>
+                    The game is not designed to be accessible to users with visual impairments. The images are displayed in
+                    a grid and the user must select the images by clicking on them. This is not accessible to users with
+                    visual impairments because they cannot see the images. The user must also be able to see the images in
+                    order to identify the crosswalks. This is not accessible to users with visual impairments because they
+                    cannot see the images.
+                </p>
+            </section>
 
-        <section>
-            <h1>
-                CAPTCHA Game
-            </h1>
-            <h2>Select all crosswalk images</h2>
-            <div id="captcha"></div>
-            <button id="captcha-submit">Submit</button>
-            <p id="captcha-score"></p>
-            <br />
-            <button id="captcha-reset" hidden>Play Again</button>
+            <section>
+                <h1>
+                    CAPTCHAs for People with Vision Loss
+                </h1>
+                <h2>Select all crosswalk images</h2>
+                <div id="blurry_captcha"></div>
+                <button id="blurry_captcha-submit">Submit</button>
+                <p id="blurry_captcha-score"></p>
+                <br />
+                <button id="blurry_captcha-reset" hidden>Play Again</button>
 
-            <p>
-                This is a demo of a CAPTCHA game. The goal is to select all images that contain a crosswalk. The
-                images
-                are
-                displayed in a grid, and the user can select an image by clicking on it. The user can also deselect
-                an
-                image
-                by clicking on it again. The user can submit their selection by clicking the "Submit" button. The
-                user
-                can
-                play again by clicking the "Play Again" button.
-            </p>
-            <p>
-                This game is intended to be a simplified version of a CAPTCHA. It is not intended to be a
-                replacement for
-                a
-                CAPTCHA, but rather a demonstration of the accessibility challenges that CAPTCHAs can pose for
-                users
-                with
-                disabilities.
-            </p>
-            <p>
-                The game is not designed to be accessible to users with visual impairments. The images are displayed in
-                a grid and the user must select the images by clicking on them. This is not accessible to users with
-                visual impairments because they cannot see the images. The user must also be able to see the images in
-                order to identify the crosswalks. This is not accessible to users with visual impairments because they
-                cannot see the images.
-            </p>
-        </section>
+                <p>
+                    [BACKGROUND AND STATISTICS ON VISION LOSS]
+                </p>
 
-        <section>
-            <h1>
-                CAPTCHAs for People with Vision Loss
-            </h1>
-            <h2>Select all crosswalk images</h2>
-            <div id="blurry_captcha"></div>
-            <button id="blurry_captcha-submit">Submit</button>
-            <p id="blurry_captcha-score"></p>
-            <br />
-            <button id="blurry_captcha-reset" hidden>Play Again</button>
+                <p>
+                    This is an example of how solving a CAPTCHA might look to a person with a visual impairment such as
+                    [INSERT TYPE OF VISUAL IMPAIRMENT HERE]. ...
+                </p>
 
-            <p>
-                [BACKGROUND AND STATISTICS ON VISION LOSS]
-            </p>
+                <p>
+                    As you can see, it is difficult for a person with a visual impairment to solve a CAPTCHA and would not
+                    be able to fully access many parts of the web.
+                </p>
 
-            <p>
-                This is an example of how solving a CAPTCHA might look to a person with a visual impairment such as
-                [INSERT TYPE OF VISUAL IMPAIRMENT HERE]. ...
-            </p>
+                <p>
+                    Talk about current solutions and show how they either don't work in proving that the user is human or
+                    are not accessible to people with vision loss.
+                </p>
+            </section>
 
-            <p>
-                As you can see, it is difficult for a person with a visual impairment to solve a CAPTCHA and would not
-                be able to fully access many parts of the web.
-            </p>
+            <section>
+                <h1>
+                    CAPTCHAs for People with Color Blindness (Protanopia)
+                </h1>
+                <h2>Select all images of Traffic Lights with Green Signals</h2>
+                <div id="color_captcha"></div>
+                <button id="color_captcha-submit">Submit</button>
+                <p id="color_captcha-score"></p>
+                <br />
+                <button id="color_captcha-reset" hidden>Play Again</button>
 
-            <p>
-                Talk about current solutions and show how they either don't work in proving that the user is human or
-                are not accessible to people with vision loss.
-            </p>
-        </section>
+                <p>
+                    [BACKGROUND AND STATISTICS ON Color Blindness]
+                </p>
 
-        <section>
-            <h1>
-                CAPTCHAs for People with Color Blindness (Protanopia)
-            </h1>
-            <h2>Select all images of Traffic Lights with Green Signals</h2>
-            <div id="color_captcha"></div>
-            <button id="color_captcha-submit">Submit</button>
-            <p id="color_captcha-score"></p>
-            <br />
-            <button id="color_captcha-reset" hidden>Play Again</button>
+                <p>
+                    There are three types of colorblindness (A, B, C) with A being the most common. This is an example of
+                    how solving a CAPTCHA might look to a person with a A color-blindness ...
+                </p>
 
-            <p>
-                [BACKGROUND AND STATISTICS ON Color Blindness]
-            </p>
+                <p>
+                    As you can see, it is difficult for a person with a with color-blindness to solve a CAPTCHA and
+                    especially captchas that require color information to solve and would
+                    not be able to fully access many parts of the web. talk about how you might be able to deduce the color
+                    of a traffic light from the position of the active light but this becomes hard/impossible in the case of
+                    horizontal traffic lights. Also mention how if the question was to select all images of traffic lights
+                    that are painted yellow instead of black for example, this task would be even more difficult.
+                </p>
 
-            <p>
-                There are three types of colorblindness (A, B, C) with A being the most common. This is an example of
-                how solving a CAPTCHA might look to a person with a A color-blindness ...
-            </p>
+                <p>
+                    Talk about current solutions and show how they either don't work in proving that the user is human or
+                    are not accessible to people with vision loss.
+                </p>
+            </section>
 
-            <p>
-                As you can see, it is difficult for a person with a with color-blindness to solve a CAPTCHA and
-                especially captchas that require color information to solve and would
-                not be able to fully access many parts of the web. talk about how you might be able to deduce the color
-                of a traffic light from the position of the active light but this becomes hard/impossible in the case of
-                horizontal traffic lights. Also mention how if the question was to select all images of traffic lights
-                that are painted yellow instead of black for example, this task would be even more difficult.
-            </p>
-
-            <p>
-                Talk about current solutions and show how they either don't work in proving that the user is human or
-                are not accessible to people with vision loss.
-            </p>
-        </section>
-
-        <script src="captcha.js"></script>
-    </div>
-</body>
+            <script src="captcha.js"></script>
+        </div>
+    </body>
 
 </html>
