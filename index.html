@@ -148,23 +148,34 @@
                 </p>
 
                 <p>
-                    Humans are hardwired to recognize faces and the emotions they display even with quite severe distortions. A raised eyebrow or a sideways head are easy to recognize because of the numerous contours that define the human face. Colors no longer matter; we still recognize the person under the face paint. Asking users to identify faces with a particular emotion is an effective way to bypass visual distortions to a certain degree.
+                    Humans are hardwired to recognize faces and the emotions they display even with quite severe distortions. A
+                    raised eyebrow or a sideways head are easy to recognize because of the numerous contours that define the human
+                    face. Colors no longer matter; we still recognize the person under the face paint. Asking users to identify
+                    faces with a particular emotion is an effective way to bypass visual distortions to a certain degree.
                 </p>
 
                 <!-- @bilal if you want to add a faces captcha with distortions, up to you-->
-                
+
                 <p>
-                    Emotion CAPTCHAs may fail for users with social-emotional agnosia or alexithymia, which inhibits the characterization and understanding of emotional display. Both often occur in individuals with schizophrenia or autism.
+                    Emotion CAPTCHAs may fail for users with social-emotional agnosia or alexithymia, which inhibits the
+                    characterization and understanding of emotional display. Both often occur in individuals with schizophrenia or
+                    autism.
                 </p>
 
                 <p>
-                    In a similar vein, motion CAPTCHAs rely on the ability to understand cause and effect in the physical world. A short GIF of a person or object moving through space is enough to answer the question "what preceded this" or "what follows this". For example, a person moving their arms towards their chest suggests a hug, or a lamp precariously placed suggests it will fall over. Given multiple choices of possibilities, the user selects the correct one.
+                    In a similar vein, motion CAPTCHAs rely on the ability to understand cause and effect in the physical world. A
+                    short GIF of a person or object moving through space is enough to answer the question "what preceded this" or
+                    "what follows this". For example, a person moving their arms towards their chest suggests a hug, or a lamp
+                    precariously placed suggests it will fall over. Given multiple choices of possibilities, the user selects the
+                    correct one.
                 </p>
 
                 <!-- @bilal idk what graphic should go here, there's an example in the doc -->
 
                 <p>
-                    This solution is especially effective if the user has extremely limited vision. Screen readers, which are normally inoperable on CAPTCHAs (that would defeat the purpose) can be used to read alt-text on images (e.g. "the lamp is wobbly") as well as the multiple choices. 
+                    This solution is especially effective if the user has extremely limited vision. Screen readers, which are
+                    normally inoperable on CAPTCHAs (that would defeat the purpose) can be used to read alt-text on images (e.g.
+                    "the lamp is wobbly") as well as the multiple choices.
                 </p>
 
                 <p>
@@ -184,10 +195,84 @@
                 <h1>Reading Disorders and Languages</h1>
 
                 <p>
-                    Dyslexia, which affects the ability to read, is present in around 3-7% of the population at varying degrees and up to 20% may have some general symptoms that go unnoticed and undiagnosed. We recreate here what a dyslexic reader might experience with normal text. It should be clear that heavily convoluted series of letters with neither context nor morphemic cues (ie. prefixes, word stems, etc. ) are even more difficult. Below we present samples to any user from the "difficult" text CAPTCHA dataset.
+                    Dyslexia, which affects the ability to read, is present in around 3-7% of the population at varying degrees
+                    and up to 20% may have some general symptoms that go unnoticed and undiagnosed. We recreate here what a
+                    dyslexic reader might experience with normal text. It should be clear that heavily convoluted series of
+                    letters with neither context nor morphemic cues (ie. prefixes, word stems, etc. ) are even more difficult.
+                    Below we present samples to any user from the "difficult" text CAPTCHA dataset.
                 </p>
 
-                
+                <!-- @bilal insert dyslexia game here -->
+
+                <!-- @bilal imsert original text CAPTCHA here -->
+
+                <p>
+                    Inaccessibility doesn't even need to come from psychological conditions. Most of the world does not speak
+                    English or use the Latin alphabet. Text CAPTCHAs which require users to type out an answer in an alternate
+                    keyboard while matching unfamiliar characters is an easily solvable problem — generate text in different
+                    alphabets. While we expect the most commonly used websites to be internationalized (support different
+                    languages), CAPTCHAs were conspicuously behind in this trend for several years. Image based CAPTCHAs, such as
+                    the ones Google provide, support internationalization (another good reason why users must be able to choose
+                    their preferred modality). Here's some Cyrillic (alphabet of 32 letters), try recreating it.
+                </p>
+
+                <!-- @bilal insert Cyrillic game -->
+            </section>
+
+            <section>
+                <h1>
+                    Solutions
+                </h1>
+
+                <p>
+                    Apart from increased internationalization, no good workarounds exist for text-based CAPTCHA solutions. Whereas
+                    with common visual impairments the problem is with transmitting information, textual impairment is usually
+                    caused by an underlying difficulty in interpreting information. Given that solving times for text based
+                    CAPTCHAs are only marginally shorter than image based CAPTCHA but have a higher rate of inaccuracy, we believe
+                    it should be completely eliminated.
+                </p>
+
+                <p>
+                    We discuss the concept of a "MAPTCHA", or mathematical CAPTCHA, for the sake of completeness. A numerical prompt supported by a screen reader offers a logic or reasoning puzzle to the user. This fails to work for several reasons including for users with cognitive impairments such as dyscalculia. The general public also often exhibits an inability to reason.  
+                </p>
+            </section>
+
+            <section>
+                <h1>
+                    Auditory Impairment
+                </h1>
+                Audio CAPTCHAs have almost completely been phased out. A computer generated voice reads a sentence or word which
+                the user types out. Not only is sound ineffective in noisy environments, computer generated audio is much more
+                difficult to interpret than human speech. The most common impairment, hearing loss or deafness, has little room
+                for accessibility improvements from a developer's point of view. You can only turn up the volume, and that only
+                goes so far. Needing to replay the audio repeatedly for all users represents a poor user experience. We think
+                audio CAPTCHAs should only be offered as an alternate modal when visual modes fail; it should never be the
+                default.
+
+            </section>
+
+            <section>
+                <h1>
+                    General Solutions
+                </h1>
+
+                <!-- @elena to talk about :-->
+
+                biometrics (pros & cons)
+                proof of work
+                zero knowledge proof (yubikey)
+                    - as AI gets better, pushed towards these last two solutions
+                reCAPTCHA v2 (images) vs reCAPTCHA v3 (scoring)
+                    - if likely bot, websites need to fall back on traditional tests
+
+                <!-- @bilal honeypot here-->
+            </section>
+
+            <section>
+                <h1>
+                    <!-- @kevin todo -->
+                    To sum up...
+                </h1>
             </section>
 
             <section id="dyslexia">
@@ -200,15 +285,15 @@
                 <p id="dyslexia_captcha-score"></p>
                 <br />
                 <button id="dyslexia_captcha-reset" hidden>Play Again</button>
-    
+
                 <p>
                     If you thought captchas were hard to do with vision loss, imagine how hard it would be to do them with a
                     learning disability like Dyslexia
                 </p>
             </section>
-    
-    
-    
+
+
+
             <!-- Dyslexia script from https://geon.github.io/programming/2016/03/03/dsxyliea -->
             <script type="text/javascript">
                 var getTextNodesIn = function (el) {
@@ -310,7 +395,6 @@
     
                 setInterval(messUpWords, 50);
             </script>
-    
             <script src="captcha.js"></script>
         </div>
     </body>
