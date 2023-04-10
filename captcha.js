@@ -1,25 +1,37 @@
 function addCaptcha(prefix, target, images) {
     const captchaGrid = document.getElementById(prefix + "captcha");
+    const startButton = document.getElementById(prefix + "captcha-start");
     const submitButton = document.getElementById(prefix + "captcha-submit");
+    const timerDisplay = document.getElementById(prefix + "captcha-timer");
     const scoreDisplay = document.getElementById(prefix + "captcha-score");
     const resetButton = document.getElementById(prefix + "captcha-reset");
-    const startButton = document.getElementById(prefix + "captcha-start");
-    const timer = document.getElementById(prefix + "timer");
-    const average = document.getElementById(prefix + "average");
 
     let gameActive = true;
-    let totalTime = 0;
-    let numAttempts = 0;
-    let timerValue = 0;
-    let timerInterval;
+    let timer;
+    let timeElapsed = 0;
 
     initializeGame();
-    submitButton.disabled = true;
+
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeElapsed / 60);
+        const seconds = timeElapsed % 60;
+        timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    }
 
     startButton.addEventListener("click", () => {
-        startButton.disabled = true;
-        submitButton.disabled = false;
-        timerInterval = setInterval(setTimer, 1000);
+        initializeGame(init_event_listeners = true);
+        startButton.hidden = true;
+        updateTimerDisplay();
+
+        time_elapsed = 0;
+        timerDisplay.hidden = false;
+        updateTimerDisplay();
+
+        timer = setInterval(() => {
+            timeElapsed++;
+            updateTimerDisplay();
+        }, 1000);
+
     });
 
     submitButton.addEventListener("click", () => {
@@ -44,25 +56,23 @@ function addCaptcha(prefix, target, images) {
             }
         }
 
-        scoreDisplay.textContent = `Correct: ${correct}, Incorrect: ${incorrect}, Total: ${total}`;
-        startButton.disabled = true;
+        scoreDisplay.textContent = `${correct} Correct, ${incorrect} Incorrect, ${total} Total`;
         submitButton.disabled = true;
+        submitButton.hidden = true;
         resetButton.hidden = false;
+        clearInterval(timer);
         gameActive = false;
-        clearInterval(timerInterval);
-        numAttempts++;
-        totalTime += timerValue;
-        average.innerHTML = (totalTime / numAttempts).toFixed(2);
     });
 
     resetButton.addEventListener("click", () => {
+        initializeGame();
         scoreDisplay.textContent = "";
         startButton.disabled = false;
-        submitButton.disabled = true;
+        startButton.hidden = false;
         resetButton.hidden = true;
-        timerValue = 0;
-        timer.innerHTML = timerValue;
-        initializeGame();
+        timerDisplay.hidden = true;
+        timeElapsed = 0;
+        updateTimerDisplay();
     });
 
     function getRandomImages(images, count) {
@@ -70,7 +80,7 @@ function addCaptcha(prefix, target, images) {
         return shuffledImages.slice(0, count);
     }
 
-    function initializeGame() {
+    function initializeGame(init_event_listeners = false) {
         gameActive = true;
 
         captchaGrid.innerHTML = "";
@@ -80,19 +90,20 @@ function addCaptcha(prefix, target, images) {
         randomImages.forEach((src) => {
             const img = document.createElement("img");
             img.src = `images/${src}`;
-            img.addEventListener("click", (event) => {
-                if (gameActive) {
-                    event.target.classList.toggle("selected");
-                }
-            });
+
+            if (init_event_listeners) {
+                img.addEventListener("click", (event) => {
+                    if (gameActive) {
+                        event.target.classList.toggle("selected");
+                    }
+                });
+                submitButton.disabled = false;
+                submitButton.hidden = false;
+            }
 
             captchaGrid.appendChild(img);
         });
-    }
 
-    function setTimer() {
-        ++timerValue;
-        timer.innerHTML = timerValue;
     }
 }
 
@@ -163,13 +174,38 @@ const color_blindness_images = [
     "color_trafficlight_red_1.png",
     "color_trafficlight_red_2.png",
     "color_trafficlight_red_3.png",
+    "color_trafficlight_red_4.png",
 ];
 
-
-
-
+const diabetes_images = [
+    "diabetes_bicycle_1.png",
+    "diabetes_bicycle_2.png",
+    "diabetes_bicycle_3.png",
+    "diabetes_bicycle_4.png",
+    "diabetes_bicycle_5.png",
+    "diabetes_bicycle_6.png",
+    "diabetes_bus_1.png",
+    "diabetes_bus_2.png",
+    "diabetes_bus_3.png",
+    "diabetes_bus_4.png",
+    "diabetes_bus_5.png",
+    "diabetes_bus_6.png",
+    "diabetes_car_1.png",
+    "diabetes_car_2.png",
+    "diabetes_car_3.png",
+    "diabetes_car_4.png",
+    "diabetes_car_5.png",
+    "diabetes_car_6.png",
+    "diabetes_motorcycle_1.png",
+    "diabetes_motorcycle_2.png",
+    "diabetes_motorcycle_3.png",
+    "diabetes_motorcycle_4.png",
+    "diabetes_motorcycle_5.png",
+    "diabetes_motorcycle_6.png",
+];
 
 addCaptcha("", "crosswalk", images); // Original captcha
 addCaptcha("blurry_", "crosswalk", vision_loss_images); // Blurry captcha
 addCaptcha("color_", "trafficlight_green", color_blindness_images); // Color blindness captcha
+addCaptcha("diabetes_", "car", diabetes_images); // Diabetic Retinopathy captcha
 addCaptcha("dyslexia_", "crosswalk", images); // Dyslexia captcha
