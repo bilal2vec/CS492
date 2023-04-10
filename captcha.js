@@ -3,10 +3,24 @@ function addCaptcha(prefix, target, images) {
     const submitButton = document.getElementById(prefix + "captcha-submit");
     const scoreDisplay = document.getElementById(prefix + "captcha-score");
     const resetButton = document.getElementById(prefix + "captcha-reset");
+    const startButton = document.getElementById(prefix + "captcha-start");
+    const timer = document.getElementById(prefix + "timer");
+    const average = document.getElementById(prefix + "average");
 
     let gameActive = true;
+    let totalTime = 0;
+    let numAttempts = 0;
+    let timerValue = 0;
+    let timerInterval;
 
     initializeGame();
+    submitButton.disabled = true;
+
+    startButton.addEventListener("click", () => {
+        startButton.disabled = true;
+        submitButton.disabled = false;
+        timerInterval = setInterval(setTimer, 1000);
+    });
 
     submitButton.addEventListener("click", () => {
         const images = captchaGrid.getElementsByTagName("img");
@@ -31,15 +45,23 @@ function addCaptcha(prefix, target, images) {
         }
 
         scoreDisplay.textContent = `Correct: ${correct}, Incorrect: ${incorrect}, Total: ${total}`;
+        startButton.disabled = true;
         submitButton.disabled = true;
         resetButton.hidden = false;
         gameActive = false;
+        clearInterval(timerInterval);
+        numAttempts++;
+        totalTime += timerValue;
+        average.innerHTML = (totalTime / numAttempts).toFixed(2);
     });
 
     resetButton.addEventListener("click", () => {
         scoreDisplay.textContent = "";
-        submitButton.disabled = false;
+        startButton.disabled = false;
+        submitButton.disabled = true;
         resetButton.hidden = true;
+        timerValue = 0;
+        timer.innerHTML = timerValue;
         initializeGame();
     });
 
@@ -66,6 +88,11 @@ function addCaptcha(prefix, target, images) {
 
             captchaGrid.appendChild(img);
         });
+    }
+
+    function setTimer() {
+        ++timerValue;
+        timer.innerHTML = timerValue;
     }
 }
 

@@ -58,6 +58,14 @@ p {
     flex-wrap: wrap;
 }
 
+#captcha_timing,
+#diabetic_captcha_timing,
+#blurry_captcha_timing,
+#color_captcha_timing,
+#dyslexia_captcha_timing {
+    font-size: 16px;
+}
+
 img {
     width: 100px;
     height: 100px;
