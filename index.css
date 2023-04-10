@@ -45,6 +45,7 @@ p {
 }
 
 #captcha,
+#diabetic_captcha,
 #blurry_captcha,
 #color_captcha {
     display: grid;
@@ -74,7 +75,7 @@ img.beatles {
 }
 
 img.selected {
-    border-color: black;
+    border-color: white;
 }
 
 #container {
@@ -102,5 +103,10 @@ img.selected {
     margin-top: 50px;
     margin-bottom: 550px;
     font-size: 24px;
+    text-align: center;
+}
+
+div.select {
+    width: 100%;
     text-align: center;
 }

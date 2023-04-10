@@ -19,7 +19,7 @@
             </div>
             <section class="item">
                 <p>
-                    "I'm not a robot." The animated checkbox and tiles are instantly recognizable to any netizen worthy of the
+                    "I'm not a robot". The animated checkbox and tiles are instantly recognizable to any netizen worthy of the
                     name. What do these fuzzy letters say? How many animals are there? Find all the bicycles. As resources and
                     services have increasingly found their way onto the internet, the defenses guarding their access have grown in
                     sophistication.
@@ -27,31 +27,194 @@
 
                 <p>
                     To protect against automated attacks, websites have an interest in determining if a user is indeed human, and
-                    the most common way of doing so is to ask the user to complete a series of tasks <i>presumably</i> any human
-                    could easily complete but would cost a bot significant effort. This is known as a reverse Turing test. It's
-                    most common reification is the CAPTCHA — Completely Automated Public Turing test to tell Computers and
-                    Humans Apart. Here's Google's reCAPTCHAv2 (image not theirs):
+                    the most common way of doing so is to use what's known as a reverse Turing test. That is, ask the user to
+                    complete a series of tasks <i>presumably</i> any human could easily complete but would cost a bot significant
+                    effort. Its most common reification is the CAPTCHA — the Completely Automated Public Turing test to tell
+                    Computers and Humans Apart. Here's Google's reCAPTCHAv2 (image not theirs):
                 </p>
 
                 <div style="width:100%;">
-                    <img src="images/beatles.png" class="beatles"/>
+                    <img src="images/beatles.png" class="beatles" alt="CAPTCHA asking user to identify crosswalks where the image
+                        is the Beatles walking across a crosswalk, also the record cover of their album Abbey Road"/>
                 </div>
 
-
-                <h1>Introduction</h1>
                 <p>
-                    CAPTCHAs have become a common security measure to protect websites from automated bots. However, their
-                    implementation often poses challenges for people with disabilities, leading to accessibility issues.
-                    This
-                    demo
-                    will explore the difficulties of CAPTCHAs and suggest alternative solutions that prioritize both
-                    security
-                    and
-                    accessibility.
+                    In the race to stump machines, it's not the machines that have been left behind, but many of our fellow
+                    humans. The pervasive assumption that all humans see, think, and understand in the same way has made CAPTCHA,
+                    especially as machine vision exceeds human vision, more a discriminator of ability among humans than against
+                    machines. But how do we make a fundamentally inaccessible puzzle accessible? In the interactions below, we
+                    demonstrate what works and doesn't work, some of the research, and some plausible solutions. Empathize and
+                    enjoy.
+                </p>
+
+            </section>
+
+            <section>
+                <h1>
+                    CAPTCHA Game
+                </h1>
+                <p>
+                    This is a demo of the CAPTCHA game. The goal is to select all images that contain a crosswalk. The
+                    images are displayed in a grid, and the user can select an image by clicking on it. Clicking again de-selects
+                    an image. Submit the chosen images for evaluation by clicking "Submit" and play again by clicking the "Play
+                    Again" button that appears. We encourage you to play multiple times to get a representative average time.
+                </p>
+                <!-- @elena could we add a start game button and a timer + running average? -->
+                <!-- @bilal maybe we can style the results + buttons slightly -->
+                <!-- @bilal change image class -->
+                <p>
+                    It takes the average user 32 seconds. We're confident you are not the average user 😊.
+                </p>
+                <div class="select">
+                    <h2>Select all crosswalk images</h2>
+                </div>
+                <div id="captcha"></div>
+                <button id="captcha-submit">Submit</button>
+                <p id="captcha-score"></p>
+                <br />
+                <button id="captcha-reset" hidden>Play Again</button>
+
+                <p>
+                    This game is intended to be a simplified version of a CAPTCHA, not a replacement. By simulating challenges
+                    that may arise in completing the game, we aim to demonstrate how inaccessible CAPTCHAs become. This difficulty
+                    should be reflected in the average time required. We try to be as faithful as possible to the conditions that
+                    may lead to these challenges, and take full responsibility for any inaccuracies.
                 </p>
             </section>
 
-            <section class="item">
+            <section>
+                <h1>
+                    Vision Loss
+                </h1>
+                <p>
+                    About 12 million Americans have some form of vision impairment, of which 1 million are legally blind. 4.2
+                    million have uncorrectable vision impairment, a number expected to double by 2050 due to the epidemics of
+                    diabetes and other chronic conditions. The most common impairment comes from vision distortion as a result of
+                    refractive errors (near- and far-sightedness), cataracts, or age-related macular degeneration. Roughly 20
+                    million American over 40 have some form of cataracts and 1.8 million suffer macular degeneration. Macular
+                    degeneration has no known cure.
+                </p>
+
+                <!-- @bilal change image class -->
+                <div class="select">
+                    <h2>Select all crosswalk images</h2>
+                </div>
+                <div id="blurry_captcha"></div>
+                <button id="blurry_captcha-submit">Submit</button>
+                <p id="blurry_captcha-score"></p>
+                <br />
+                <button id="blurry_captcha-reset" hidden>Play Again</button>
+
+                <p>
+                    Diabetic retinopathy is caused by damage to the blood vessels behind the eye, leading to patches of receptors
+                    unable to process light. An estimated 4.1 million Americans are affected by retinopathy of some form, of which
+                    nearly a million are deemed "vision-threatening".
+                </p>
+
+                <!-- @bilal add diabetic retinopathy images -->
+                <div class="select">
+                    <h3>[Insert diabetic CAPTCHA here]</h3>
+                </div>
+
+                <p>
+                    Color-blindness is a condition that affects 1 in 12 men and 1 in 200 women. It's characterized by the
+                    inability to distinguish between certain colors, most commonly between red and green (protanopia). This
+                    affects not just the colors red and green, but all colors (e.g. purple) that have them as a base color. Many
+                    color blind people are surprised to learn that peanut butter (which has a component of red color) is not in
+                    fact green. In a box of 24 crayons, most color blind people can only accurately identify 5 of them.
+
+                </p>
+
+
+                <!-- @bilal I couldn't find any good demonstrations in the data set-->
+                <!-- the fire hydrant shape is too obvious -->
+                <!-- maybe just find some pictures online and as for "red object" -->
+                <h2>Select all images of Traffic Lights with Green Signals</h2>
+                <div id="color_captcha"></div>
+                <button id="color_captcha-submit">Submit</button>
+                <p id="color_captcha-score"></p>
+                <br />
+                <button id="color_captcha-reset" hidden>Play Again</button>
+
+            </section>
+
+            <section>
+                <h1>Solutions</h1>
+                <p>
+                    We present these remedies assuming a solution would keep the graphical interface. An immediately obvious
+                    solution is multimodal CAPTCHAs: users may select between visual, auditory, or even biometric inputs, but
+                    we save that for the very end.
+                </p>
+
+                <p>
+                    Humans are hardwired to recognize faces and the emotions they display even with quite severe distortions. A raised eyebrow or a sideways head are easy to recognize because of the numerous contours that define the human face. Colors no longer matter; we still recognize the person under the face paint. Asking users to identify faces with a particular emotion is an effective way to bypass visual distortions to a certain degree.
+                </p>
+
+                <!-- @bilal if you want to add a faces captcha with distortions, up to you-->
+                
+                <p>
+                    Emotion CAPTCHAs may fail for users with social-emotional agnosia or alexithymia, which inhibits the characterization and understanding of emotional display. Both often occur in individuals with schizophrenia or autism.
+                </p>
+
+                <p>
+                    In a similar vein, motion CAPTCHAs rely on the ability to understand cause and effect in the physical world. A short GIF of a person or object moving through space is enough to answer the question "what preceded this" or "what follows this". For example, a person moving their arms towards their chest suggests a hug, or a lamp precariously placed suggests it will fall over. Given multiple choices of possibilities, the user selects the correct one.
+                </p>
+
+                <!-- @bilal idk what graphic should go here, there's an example in the doc -->
+
+                <p>
+                    This solution is especially effective if the user has extremely limited vision. Screen readers, which are normally inoperable on CAPTCHAs (that would defeat the purpose) can be used to read alt-text on images (e.g. "the lamp is wobbly") as well as the multiple choices. 
+                </p>
+
+                <p>
+                    The following are similar ideas or ideas limited to certain contexts:
+                </p>
+
+                <ul>
+                    <li> A similar cause and effect based solution requires re-organizing the panes of a cartoon.</li>
+                    <li> When logging into a social media account, identify faces that belong to a friend. </li>
+                    <li> Pattern recognition. Which object does this shadow come from? Find hollow shapes with 7 sides. </li>
+                    <li> Drag a cursor in the shape of a pear. Requires motor control and dexterity. </li>
+                </ul>
+            </section>
+
+
+            <section>
+                <h1>Reading Disorders and Languages</h1>
+
+                <p>
+                    Dyslexia, which affects the ability to read, is present in around 3-7% of the population at varying degrees and up to 20% may have some general symptoms that go unnoticed and undiagnosed. We recreate here what a dyslexic reader might experience with normal text. It should be clear that heavily convoluted series of letters with neither context nor morphemic cues (ie. prefixes, word stems, etc. ) are even more difficult. Below we present samples to any user from the "difficult" text CAPTCHA dataset.
+                </p>
+
+                
+            </section>
+
+            <script src="captcha.js"></script>
+        </div>
+    </body>
+
+</html>
+
+
+<!-- <p>
+        The game is not designed to be accessible to users with visual impairments. The images are displayed in
+        a grid and the user must select the images by clicking on them. This is not accessible to users with
+        visual impairments because they cannot see the images. The user must also be able to see the images in
+        order to identify the crosswalks. This is not accessible to users with visual impairments because they
+        cannot see the images.
+    </p> -->
+<!-- <h1>Introduction</h1>
+    <p>
+        CAPTCHAs have become a common security measure to protect websites from automated bots. However, their
+        implementation often poses challenges for people with disabilities, leading to accessibility issues.
+        This
+        demo
+        will explore the difficulties of CAPTCHAs and suggest alternative solutions that prioritize both
+        security
+        and
+        accessibility.
+    </p> -->
+<!-- <section class="item">
                 <h1>What are Captchas</h1>
                 <p>
                     CAPTCHAs (Completely Automated Public Turing test to tell Computers and Humans Apart) are a type of
@@ -98,117 +261,4 @@
                     CAPTCHAs help protect websites from spam and malicious activities but can also create accessibility
                     challenges for users with disabilities, such as those with visual impairments or cognitive difficulties.
                 </p>
-            </section>
-
-            <section>
-                <h1>
-                    CAPTCHA Game
-                </h1>
-                <h2>Select all crosswalk images</h2>
-                <div id="captcha"></div>
-                <button id="captcha-submit">Submit</button>
-                <p id="captcha-score"></p>
-                <br />
-                <button id="captcha-reset" hidden>Play Again</button>
-
-                <p>
-                    This is a demo of a CAPTCHA game. The goal is to select all images that contain a crosswalk. The
-                    images
-                    are
-                    displayed in a grid, and the user can select an image by clicking on it. The user can also deselect
-                    an
-                    image
-                    by clicking on it again. The user can submit their selection by clicking the "Submit" button. The
-                    user
-                    can
-                    play again by clicking the "Play Again" button.
-                </p>
-                <p>
-                    This game is intended to be a simplified version of a CAPTCHA. It is not intended to be a
-                    replacement for
-                    a
-                    CAPTCHA, but rather a demonstration of the accessibility challenges that CAPTCHAs can pose for
-                    users
-                    with
-                    disabilities.
-                </p>
-                <p>
-                    The game is not designed to be accessible to users with visual impairments. The images are displayed in
-                    a grid and the user must select the images by clicking on them. This is not accessible to users with
-                    visual impairments because they cannot see the images. The user must also be able to see the images in
-                    order to identify the crosswalks. This is not accessible to users with visual impairments because they
-                    cannot see the images.
-                </p>
-            </section>
-
-            <section>
-                <h1>
-                    CAPTCHAs for People with Vision Loss
-                </h1>
-                <h2>Select all crosswalk images</h2>
-                <div id="blurry_captcha"></div>
-                <button id="blurry_captcha-submit">Submit</button>
-                <p id="blurry_captcha-score"></p>
-                <br />
-                <button id="blurry_captcha-reset" hidden>Play Again</button>
-
-                <p>
-                    [BACKGROUND AND STATISTICS ON VISION LOSS]
-                </p>
-
-                <p>
-                    This is an example of how solving a CAPTCHA might look to a person with a visual impairment such as
-                    [INSERT TYPE OF VISUAL IMPAIRMENT HERE]. ...
-                </p>
-
-                <p>
-                    As you can see, it is difficult for a person with a visual impairment to solve a CAPTCHA and would not
-                    be able to fully access many parts of the web.
-                </p>
-
-                <p>
-                    Talk about current solutions and show how they either don't work in proving that the user is human or
-                    are not accessible to people with vision loss.
-                </p>
-            </section>
-
-            <section>
-                <h1>
-                    CAPTCHAs for People with Color Blindness (Protanopia)
-                </h1>
-                <h2>Select all images of Traffic Lights with Green Signals</h2>
-                <div id="color_captcha"></div>
-                <button id="color_captcha-submit">Submit</button>
-                <p id="color_captcha-score"></p>
-                <br />
-                <button id="color_captcha-reset" hidden>Play Again</button>
-
-                <p>
-                    [BACKGROUND AND STATISTICS ON Color Blindness]
-                </p>
-
-                <p>
-                    There are three types of colorblindness (A, B, C) with A being the most common. This is an example of
-                    how solving a CAPTCHA might look to a person with a A color-blindness ...
-                </p>
-
-                <p>
-                    As you can see, it is difficult for a person with a with color-blindness to solve a CAPTCHA and
-                    especially captchas that require color information to solve and would
-                    not be able to fully access many parts of the web. talk about how you might be able to deduce the color
-                    of a traffic light from the position of the active light but this becomes hard/impossible in the case of
-                    horizontal traffic lights. Also mention how if the question was to select all images of traffic lights
-                    that are painted yellow instead of black for example, this task would be even more difficult.
-                </p>
-
-                <p>
-                    Talk about current solutions and show how they either don't work in proving that the user is human or
-                    are not accessible to people with vision loss.
-                </p>
-            </section>
-
-            <script src="captcha.js"></script>
-        </div>
-    </body>
-
-</html>
+            </section> -->
