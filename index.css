@@ -29,6 +29,9 @@ body {
 
 section {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1,
@@ -44,11 +47,24 @@ p {
     margin-bottom: 10px;
 }
 
+button {
+    background: #1d1d1d;
+    color: #EEEEEE;
+    border: 1px solid #EEEEEE;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 10px;
+}
+
 #captcha,
 #diabetic_captcha,
 #blurry_captcha,
 #color_captcha,
-#dyslexia_captcha {
+#dyslexia_captcha,
+#diabetes_captcha {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
@@ -56,14 +72,6 @@ p {
     justify-content: center;
     margin: 20px auto;
     flex-wrap: wrap;
-}
-
-#captcha_timing,
-#diabetic_captcha_timing,
-#blurry_captcha_timing,
-#color_captcha_timing,
-#dyslexia_captcha_timing {
-    font-size: 16px;
 }
 
 img {
@@ -77,6 +85,15 @@ img {
 img.beatles {
     width: 420px;
     height: 600px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+img.upside-down {
+    width: 300px;
+    height: 300px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
