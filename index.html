@@ -247,9 +247,9 @@
 
 
         <section>
-            <h1>Reading Disorders and Languages</h1>
+            <h1 class="dyslexia">Reading Disorders and Languages</h1>
 
-            <p>
+            <p class="dyslexia">
                 Dyslexia, which affects the ability to read, is present in around 3-7% of the population at varying
                 degrees
                 and up to 20% may have some general symptoms that go unnoticed and undiagnosed. We recreate here what a
@@ -259,9 +259,10 @@
                 Below we present samples to any user from the "difficult" text CAPTCHA dataset.
             </p>
 
-            <!-- @bilal insert dyslexia game here -->
-
-            <!-- @bilal imsert original text CAPTCHA here -->
+            <div style="width:100%;">
+                <img src="images/difficult_text_captcha.png" class="difficult_text_captcha"
+                    alt="A series of distorted-text captchas of high difficulty." />
+            </div>
 
             <p>
                 Inaccessibility doesn't even need to come from psychological conditions. Most of the world does not
@@ -330,32 +331,44 @@
                 General Solutions
             </h1>
 
-                <p>
-                    Biometrics, such as fingerprints and facial profiles, provide a secure form of identification. However, the 
-                    limitations of biometrics must be considered, such as those who do not have fingers or who are too old 
-                    for fingerprints to be viable.
-                </p>
-                <p>
-                    Zero knowledge proof is an interactive solution that requires a hardware device from a reliable manufacturer, 
-                    such as Yubikey. The device authenticates a user's identity by providing a unique one-time password or public key.
-                </p>
-                <p>
-                    Third-party solutions include Google's reCAPTCHA v2 and v3. The v2 reCAPTCHA process involves presenting the user with 
-                    a challenge, such as identifying objects in an image or solving a math problem, and then analyzing their response to 
-                    determine whether they are human. The challenge is designed to be very easy for humans to solve but difficult for bots to bypass. 
-                    Conversely, reCAPTCHA v3 does not require any user interaction or challenge solving. Instead, it runs in the background of 
-                    the website and evaluates the user's behavior on the site, such as mouse movements and keyboard input, to determine the 
-                    probability that they are a bot. However, one potential disadvantage of these is that they requires website owners 
-                    to share a significant amount of user data with Google, including IP addresses, user agents, and other browsing behavior. 
-                    This may raise privacy concerns for users and website owners who are uncomfortable sharing this information with a 
-                    third party. Furthermore, as AI becomes more advanced, advanced bots may be able to bypass the challenge or use 
-                    techniques such as human emulation to fool the system.
-                </p>
+            <p>
+                Biometrics, such as fingerprints and facial profiles, provide a secure form of identification. However,
+                the
+                limitations of biometrics must be considered, such as those who do not have fingers or who are too old
+                for fingerprints to be viable.
+            </p>
+            <p>
+                Zero knowledge proof is an interactive solution that requires a hardware device from a reliable
+                manufacturer,
+                such as Yubikey. The device authenticates a user's identity by providing a unique one-time password or
+                public key.
+            </p>
+            <p>
+                Third-party solutions include Google's reCAPTCHA v2 and v3. The v2 reCAPTCHA process involves presenting
+                the user with
+                a challenge, such as identifying objects in an image or solving a math problem, and then analyzing their
+                response to
+                determine whether they are human. The challenge is designed to be very easy for humans to solve but
+                difficult for bots to bypass.
+                Conversely, reCAPTCHA v3 does not require any user interaction or challenge solving. Instead, it runs in
+                the background of
+                the website and evaluates the user's behavior on the site, such as mouse movements and keyboard input,
+                to determine the
+                probability that they are a bot. However, one potential disadvantage of these is that they requires
+                website owners
+                to share a significant amount of user data with Google, including IP addresses, user agents, and other
+                browsing behavior.
+                This may raise privacy concerns for users and website owners who are uncomfortable sharing this
+                information with a
+                third party. Furthermore, as AI becomes more advanced, advanced bots may be able to bypass the challenge
+                or use
+                techniques such as human emulation to fool the system.
+            </p>
 
-                    
-                    
-                <!-- @bilal honeypot here-->
-            </section>
+
+
+            <!-- @bilal honeypot here-->
+        </section>
 
         <section>
             <h1>
@@ -363,25 +376,6 @@
                 To sum up...
             </h1>
         </section>
-
-        <section id="dyslexia">
-            <h1>
-                CAPTCHAs for people with Dyslexia
-            </h1>
-            <h2>Select all crosswalk images</h2>
-            <div id="dyslexia_captcha"></div>
-            <button id="dyslexia_captcha-submit">Submit</button>
-            <p id="dyslexia_captcha-score"></p>
-            <br />
-            <button id="dyslexia_captcha-reset" hidden>Play Again</button>
-
-            <p>
-                If you thought captchas were hard to do with vision loss, imagine how hard it would be to do them with a
-                learning disability like Dyslexia
-            </p>
-        </section>
-
-
 
         <!-- Dyslexia script from https://geon.github.io/programming/2016/03/03/dsxyliea -->
         <script type="text/javascript">
@@ -391,10 +385,8 @@
                 });
             };
 
-            var textNodes = getTextNodesIn($("#dyslexia"));
+            var textNodes = getTextNodesIn($(".dyslexia"));
             // var textNodes = getTextNodesIn($("*"));
-
-
 
             function isLetter(char) {
                 return /^[\d]$/.test(char);
