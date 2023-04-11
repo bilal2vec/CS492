@@ -100,7 +100,29 @@ img.upside-down {
     display: block;
 }
 
+input {
+    width: 270px;
+    height: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: nyt-cheltenham;
+    background-color: rgb(181, 181, 181, 0);
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: none;
+}
+
 img.motion_captcha {
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+img.emotion {
     height: auto;
     width: auto;
     margin-top: 20px;
@@ -162,4 +184,14 @@ img.selected {
 div.select {
     width: 100%;
     text-align: center;
+}
+
+button.honeypot {
+    padding: 0px;
+    margin: 0px;
+    height: 35px;
+    width: 60px;
+    font-size: 0px;
+    border: none !important;
+    background: transparent;
 }
